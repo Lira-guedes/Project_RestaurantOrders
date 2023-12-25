@@ -1,4 +1,5 @@
-from src.models.ingredient import Ingredient, Restriction 
+from src.models.ingredient import Ingredient, Restriction
+
 
 # Req 1
 def test_ingredient():

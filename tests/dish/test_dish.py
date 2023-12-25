@@ -1,5 +1,5 @@
 from src.models.dish import Dish  # noqa: F401, E261, E501
-from src.models.ingredient import Ingredient, Restriction 
+from src.models.ingredient import Ingredient
 import pytest
 
 
@@ -19,11 +19,10 @@ def test_dish():
 
     with pytest.raises(ValueError):
         Dish("picanha", -25.99)
-        
+
     ingredient = Ingredient("ovo")
     dish.add_ingredient_dependency(ingredient, 1)
 
     assert dish.recipe == {ingredient: 1}
     assert dish.get_ingredients() == {ingredient}
     assert dish.get_restrictions() == ingredient.restrictions
-
