@@ -37,7 +37,14 @@ class MenuBuilder:
                 "restrictions": dish.get_restrictions(),
             }
 
-            if not restriction or restriction not in dish.get_restrictions():
+            if not restriction or restriction in dish.get_restrictions():
+                continue
+
+            inventory = all(
+                ingredient in self.inventory.inventory
+                for ingredient in dish.get_ingredients()
+            )
+            if inventory:
                 menu.append(dishes_info)
 
         return menu
